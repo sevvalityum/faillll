@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balkon</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <button class="menu-btn" data-section="uzaktan">Uzaktan Ne Yapabiliriz</button>
+      <button class="menu-btn" data-section="hafta">Bu Hafta Ne Yapıyoruz</button>
+      <button class="menu-btn" data-section="yemek">Ne Yesek</button>
+      <button class="menu-btn" data-section="takvim">Takvim</button>
+      <button onclick="window.open('https://sherryuser.github.io/cake-blow/', '_blank')">Doğum Günü</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Uzaktan -->
+    <section id="uzaktan" class="content-section">
+      <h2>Uzaktan Ne Yapabiliriz?</h2>
+      <div id="alphabet-list"></div>
+      <button onclick="window.open('https://theuselessweb.com/', '_blank')" class="fun-btn">Sıkılınca Tıkla</button>
+    </section>
+
+    <!-- Bu Hafta Ne Yapıyoruz -->
+    <section id="hafta" class="content-section">
+      <h2>Bu Hafta Ne Yapıyoruz?</h2>
+      <div class="question">
+        <p>Nerede Buluşalım?</p>
+        <select id="sehirSec">
+          <option>Ankara</option>
+          <option>İstanbul</option>
+          <option>Eskişehir</option>
+          <option>Kim Bilir?</option>
+        </select>
+      </div>
+      <div class="question">
+        <p>Nasıl olsun?</p>
+        <select id="mekanSec">
+          <option>İç Mekan</option>
+          <option>Dış Mekan</option>
+        </select>
+      </div>
+      <div id="mekanSonuclari"></div>
+    </section>
+
+    <!-- Ne Yesek -->
+    <section id="yemek" class="content-section">
+      <h2>Ne Yesek?</h2>
+      <div class="question">
+        <p>Seç:</p>
+        <select id="kategoriSec">
+          <option>Fast Food</option>
+          <option>Ev Yemeği</option>
+        </select>
+      </div>
+      <div class="question">
+        <p>Ne istersin?</p>
+        <select id="yemekSec"></select>
+      </div>
+      <div id="yemekSonuclari"></div>
+    </section>
+
+    <!-- Takvim -->
+    <section id="takvim" class="content-section">
+      <h2>Takvim</h2>
+      <div id="takvimAlani">
+        <div id="takvimKontrolleri">
+          <button onclick="oncekiAy()">←</button>
+          <span id="takvimBaslik"></span>
+          <button onclick="sonrakiAy()">→</button>
+        </div>
+        <div id="takvimGrid"></div>
+      </div>
+      <div id="etkinlikPopup" class="popup" style="display:none">
+        <h3>Etkinlik Ekle</h3>
+        <p id="popupTarih"></p>
+        <textarea id="etkinlikText" placeholder="Etkinlik detayını yaz..."></textarea><br>
+        <button onclick="etkinlikKaydet()">Ekle</button>
+        <button onclick="kapatPopup()">İptal</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
