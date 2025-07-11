@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Balkon</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Üst Menü -->
+  <header>
+    <nav id="main-menu">
+      <ul>
+        <!-- Uzaktan Ne Yapabiliriz (Alt menüsü var) -->
+        <li class="menu-item" data-section="uzaktan">
+          Uzaktan Ne Yapabiliriz
+          <ul class="submenu">
+            <li><a href="https://sherryuser.github.io/cake-blow/" target="_blank">Doğum Günü</a></li>
+          </ul>
+        </li>
+
+        <!-- Diğer menü seçenekleri -->
+        <li class="menu-item" data-section="bu-hafta">Bu Hafta Ne Yapıyoruz</li>
+        <li class="menu-item" data-section="ne-yesek">Ne Yesek</li>
+        <li class="menu-item" data-section="takvim">Takvim</li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Ana İçerik Alanı -->
+  <main id="content">
+    <h2>Hoş Geldiniz!</h2>
+    <p>Yukarıdaki menüden bir şeyler seçerek başlayabilirsin.</p>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
