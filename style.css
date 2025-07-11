@@ -1,144 +1,325 @@
-/* Genel Reset ve Arka Plan */
+/* Genel Sayfa Stili */
 * {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  user-select: none;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffd1dc; /* Cute pembe arka plan */
-  color: #333;
+  background: #ffc0cb url('https://i.imgur.com/8pQfq3H.png') repeat; /* Cute pixel art arka plan örneği */
+  background-size: 80px 80px;
   min-height: 100vh;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Header ve Menü */
-header {
-  background-color: #ff9fbf;
-  padding: 15px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Menü Çubuğu */
+nav {
+  width: 100%;
+  background-color: #ff85a2;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
   position: sticky;
   top: 0;
   z-index: 999;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-#main-menu ul {
+nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
-.menu-item {
+nav ul li {
   position: relative;
+}
+
+nav ul li button, nav ul li a {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 600;
   cursor: pointer;
-  color: white;
-  font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 12px;
   transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.menu-item:hover {
-  background-color: #ff79a7;
+nav ul li button:hover,
+nav ul li a:hover {
+  background-color: #ff6f91;
 }
 
-.submenu {
+/* Uzaktan Ne Yapabiliriz Alt Menü */
+nav ul li .submenu {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 42px;
   left: 0;
-  background-color: #ff79a7;
-  padding: 10px;
-  border-radius: 6px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  background-color: #ff85a2;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  min-width: 200px;
+  padding: 8px 0;
   z-index: 1000;
 }
 
-.menu-item:hover .submenu {
+nav ul li:hover .submenu {
   display: block;
 }
 
-.submenu li {
-  margin: 6px 0;
+nav ul li .submenu button {
+  width: 100%;
+  padding: 10px 18px;
+  text-align: left;
+  border-radius: 0;
+  color: #fff;
 }
 
-.submenu a {
-  color: white;
-  text-decoration: none;
+nav ul li .submenu button:hover {
+  background-color: #ff6f91;
 }
 
-.submenu a:hover {
-  text-decoration: underline;
-}
-
-/* Ana İçerik */
-main#content {
+/* Ana İçerik Alanı */
+main {
+  width: 95%;
+  max-width: 1200px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
   padding: 20px;
-  animation: fadein 0.4s ease-in-out;
+  box-shadow: 0 8px 24px rgba(255, 105, 180, 0.3);
+  min-height: 600px;
+  overflow-y: auto;
+  position: relative;
 }
 
-@keyframes fadein {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Sayfa Başlıkları */
+section h2 {
+  font-size: 1.8rem;
+  color: #d6336c;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 700;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  #main-menu ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .menu-item {
-    width: 100%;
-  }
-
-  .submenu {
-    position: static;
-    box-shadow: none;
-  }
+/* Takvim Stili */
+.calendar {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  user-select: none;
 }
 
-/* Butonlar */
-button {
-  padding: 10px 16px;
-  font-size: 1rem;
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.calendar-header button {
+  background-color: #ff6f91;
   border: none;
-  border-radius: 6px;
-  background-color: #ff79a7;
   color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 10px;
 }
 
-button:hover {
-  background-color: #ff5d93;
+.calendar-header button:hover {
+  background-color: #ff85a2;
 }
 
-/* Form alanları */
-select, input[type="text"] {
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin: 10px 0;
+.calendar-header .month-year {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #b2225e;
+}
+
+/* Takvim Tabloları */
+table.calendar-table {
   width: 100%;
-  max-width: 300px;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
 
-/* Takvim placeholder */
-.calendar-container {
-  border: 2px dashed #aaa;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #fff0f5;
-  color: #333;
-  font-style: italic;
+table.calendar-table thead th {
+  padding: 10px 0;
+  background-color: #ffb6c1;
+  color: #a52a2a;
+  font-weight: 700;
+  border: 1px solid #f08080;
 }
 
-/* Liste düzeni */
-ul {
-  margin-left: 20px;
-  line-height: 1.6;
+table.calendar-table tbody td {
+  border: 1px solid #f08080;
+  height: 90px;
+  vertical-align: top;
+  padding: 6px 6px 0 6px;
+  cursor: pointer;
+  position: relative;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  overflow-wrap: break-word;
+  font-size: 0.9rem;
+  background-color: #fff0f6;
+  border-radius: 8px;
 }
+
+table.calendar-table tbody td:hover {
+  background-color: #ffd6e8;
+}
+
+/* Bugünün Tarihi Vurgusu */
+table.calendar-table tbody td.today {
+  outline: 3px solid #d6336c;
+  background-color: #ffe6f0;
+}
+
+/* Müsaitlik Renk Kodları */
+/* Utku Mavi */
+.event-utku {
+  background-color: #74b9ff;
+  color: #1e3799;
+  border-radius: 6px;
+  padding: 2px 4px;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Şevval Pembe */
+.event-sevval {
+  background-color: #ff94c2;
+  color: #9c27b0;
+  border-radius: 6px;
+  padding: 2px 4px;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Ortak Müsaitlik Yeşil */
+.event-common {
+  background-color: #55efc4;
+  color: #05672d;
+  border-radius: 6px;
+  padding: 2px 4px;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Özel Etkinlik Renkleri */
+/* Turuncu */
+.event-atis {
+  background-color: #ffa726;
+  color: #5d4037;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border-radius: 6px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+/* Kırmızı Tonları */
+.event-vize {
+  background-color: #e53935;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border-radius: 6px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.event-finaller {
+  background-color: #c62828;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border-radius: 6px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.event-izin {
+  background-color: #66bb6a;
+  color: #1b5e20;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border-radius: 6px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+/* Kırmızı Tonları Şevval */
+.event-sevval-vize {
+  background-color: #d81b60;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border-radius: 6px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.event-sevval-finaller {
+  background-color: #ad1457;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border-radius: 6px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+/* Günlük Tarih Sayısı */
+.date-number {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #b2225e;
+  margin-bottom: 3px;
+}
+
+/* Etkinlik Listesi İçin Küçük Kutucuklar */
+.event-item {
+  margin-bottom: 2px;
+  border-radius: 5px;
+  padding: 1px 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Popup Modal */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 192, 203, 0.75
